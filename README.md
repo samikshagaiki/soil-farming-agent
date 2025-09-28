@@ -1,36 +1,114 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🌱 Soil Farming Agent
 
-## Getting Started
+A modern web application built with **HTML, CSS, JavaScript, and Firebase** for managing soil information and crop distributor details.  
+This project helps farmers and users understand soil types, their characteristics, and suitable crops, while also connecting them with crop/seed distributors.  
 
-First, run the development server:
+---
 
-```bash
+## 📖 Overview
+
+Soil is a crucial component of agriculture. Different types of crops grow best in specific soils, each having unique characteristics.  
+The **Soil Farming Agent** application bridges the gap between soil experts, distributors, and users by providing updated information about soils and distributor details.
+
+---
+
+## ✨ Features & Modules
+
+### 👩‍💻 Admin
+- Login to admin panel  
+- Post soil details (soil type, characteristics, suitable crops)  
+- Post distributor details (distributor name, location, crops/seeds supplied)  
+
+### 👨‍🌾 User
+- Register and login  
+- View soil details with characteristics and crop suitability  
+- View distributor details to find nearby suppliers  
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend:** HTML, CSS, JavaScript  
+- **Backend & Database:** Firebase (Authentication, Firestore, Storage)  
+- **Hosting:** Firebase Hosting / Cloud deployment  
+- **Other:** Logging using JavaScript libraries  
+
+---
+
+## 🔑 Environment Variables
+
+Create a `.env.local` file in the root directory and add your Firebase credentials.  
+
+Example (`.env.example`):
+```env
+NEXT_PUBLIC_FIREBASE_API_KEY=your-firebase-api-key
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your-firebase-project.firebaseapp.com
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=your-firebase-project-id
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your-firebase-project.appspot.com
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your-firebase-sender-id
+NEXT_PUBLIC_FIREBASE_APP_ID=your-firebase-app-id
+👉 Replace placeholder values with actual Firebase credentials from your Firebase Console.
+
+⚡ Setup Instructions
+Clone the Repository
+
+git clone https://github.com/your-username/soil-farming-agent.git
+cd soil-farming-agent
+Install Dependencies
+(If using a bundler or npm setup)
+
+npm install
+Setup Environment Variables
+
+Copy .env.example → .env.local
+
+Add your Firebase credentials inside .env.local
+
+Run the Application Locally
+
+If using pure HTML/JS, open index.html in your browser
+
+If using npm with Firebase hosting:
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Deploy to Firebase Hosting
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+firebase deploy
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+📂 Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+soil-farming-agent/
+├── index.html          # Entry point
+├── style.css           # Styles
+├── app.js              # Core logic and Firebase integration
+├── components/         # Reusable components (if modularized)
+├── services/           # Firebase services
+├── .env.local          # Firebase secrets (NOT committed)
+├── .env.example        # Template for environment variables
+└── README.md           # Project documentation
 
-## Learn More
+🧪 Evaluation Metrics
+Code Quality: Modular, clean, and readable code
 
-To learn more about Next.js, take a look at the following resources:
+Safe: Secure use of Firebase Auth & Firestore
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Testable: Functions can be tested independently
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Maintainable: Scalable structure for future features
 
-## Deploy on Vercel
+Portable: Works across OS environments
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+🧪 Test Cases
+✅ User registration/login works correctly
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+✅ Admin can successfully add soil and distributor details
+
+✅ Soil details are fetched correctly from Firestore
+
+✅ Distributors can be filtered and displayed properly
+
+✅ Unauthorized users cannot access admin-only features
+
+📜 License
+This project is licensed under the MIT License.
+Feel free to use, modify, and distribute with attribution.
