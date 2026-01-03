@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../lib/firebase';
+// import { auth } from '../lib/firebase';
 
 export default function AuthForm({ type, onSuccess, isAdmin = false }) {
   const [email, setEmail] = useState('');

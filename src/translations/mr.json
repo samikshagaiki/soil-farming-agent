@@ -1,0 +1,46 @@
+{
+  "appName": "कृषिमित्र",
+  "tagline": "तुमचा माती आणि शेतीचा सहकारी",
+
+  "login": {
+    "title": "लॉगिन",
+    "email": "ईमेल",
+    "emailPlaceholder": "तुमचा ईमेल टाका",
+    "password": "पासवर्ड",
+    "passwordPlaceholder": "तुमचा पासवर्ड टाका",
+    "submit": "लॉगिन करा"
+  },
+
+  "register": {
+    "title": "नोंदणी",
+    "name": "पूर्ण नाव",
+    "email": "ईमेल",
+    "password": "पासवर्ड",
+    "submit": "खाते तयार करा",
+    "alreadyRegistered": "आधीच नोंदणी केलेले"
+  },
+
+  "home": {
+    "login": "लॉगिन",
+    "register": "नोंदणी करा"
+  },
+
+  "soil": {
+    "title": "मातीची माहिती",
+    "ph": "मातीचा pH",
+    "moisture": "ओलावा (%)",
+    "nitrogen": "नायट्रोजन (N)",
+    "phosphorus": "फॉस्फरस (P)",
+    "potassium": "पोटॅशियम (K)",
+    "location": "गाव / ठिकाण",
+    "submit": "माती तपासा"
+  },
+
+  "dashboard": {
+    "title": "माती अहवाल",
+    "soilHealth": "मातीची स्थिती",
+    "crops": "सुचवलेली पिके",
+    "fertilizer": "खत सल्ला",
+    "moistureStatus": "ओलाव्याची स्थिती"
+  }
+}

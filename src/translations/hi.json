@@ -1,0 +1,46 @@
+{
+  "appName": "कृषिमित्र",
+  "tagline": "आपका मिट्टी और खेती सहायक",
+
+  "home": {
+    "login": "लॉगिन",
+    "register": "रजिस्टर करें"
+  },
+
+  "login": {
+    "title": "लॉगिन",
+    "email": "ईमेल",
+    "emailPlaceholder": "अपना ईमेल दर्ज करें",
+    "password": "पासवर्ड",
+    "passwordPlaceholder": "अपना पासवर्ड दर्ज करें",
+    "submit": "लॉगिन करें"
+  },
+
+  "register": {
+    "title": "रजिस्टर करें",
+    "name": "पूरा नाम",
+    "email": "ईमेल",
+    "password": "पासवर्ड",
+    "submit": "खाता बनाएँ",
+    "alreadyRegistered": "पहले से पंजीकृत हैं"
+  },
+
+  "soil": {
+    "title": "मिट्टी की जानकारी दर्ज करें",
+    "ph": "मिट्टी का pH",
+    "moisture": "नमी (%)",
+    "nitrogen": "नाइट्रोजन (N)",
+    "phosphorus": "फॉस्फोरस (P)",
+    "potassium": "पोटैशियम (K)",
+    "location": "गाँव / स्थान",
+    "submit": "मिट्टी जांचें"
+  },
+
+  "dashboard": {
+    "title": "मिट्टी रिपोर्ट",
+    "soilHealth": "मिट्टी की स्थिति",
+    "crops": "अनुशंसित फसलें",
+    "fertilizer": "खाद सलाह",
+    "moistureStatus": "नमी की स्थिति"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "appName": "KrushiMitra",
+  "tagline": "Your Soil & Farming Companion",
+
+  "login": {
+    "title": "Login",
+    "email": "Email",
+    "emailPlaceholder": "Enter your email",
+    "password": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "submit": "Login"
+  },
+
+  "register": {
+    "title": "Register",
+    "name": "Full Name",
+    "email": "Email",
+    "password": "Password",
+    "submit": "Create Account"
+  }
+}
