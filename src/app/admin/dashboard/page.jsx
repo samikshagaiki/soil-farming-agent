@@ -1,28 +1,62 @@
-// src/app/admin/dashboard/page.tsx
-'use client';
-import { useAuth } from '@/hooks/useAuth';
-import { signOut } from 'firebase/auth';
-import { auth } from '@/lib/firebase';
-import PostForm from '@/components/PostForm';
-import Link from 'next/link';
+"use client";
 
-export default function AdminDashboard() {
-  const { user, role, loading } = useAuth();
-  if (loading) return <p>Loading...</p>;
-  if (!user || role !== 'admin') return <p>Access denied. <Link href="/">Go Home</Link></p>;
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import LanguageSelector from "@/components/LanguageSelector";
 
-  const handleLogout = () => {
-    signOut(auth);
-  };
+const AdminDashboard = () => {
+  const router = useRouter();
+
+  useEffect(() => {
+    const auth = localStorage.getItem("krushimitra-auth");
+    const role = localStorage.getItem("krushimitra-role");
+
+    if (!auth || role !== "admin") {
+      router.push("/login");
+    }
+  }, [router]);
 
   return (
-    <div className="min-h-screen bg-gray-100 p-4">
-      <header className="flex justify-between items-center mb-4">
-        <h1 className="text-2xl">Admin Dashboard</h1>
-        <button onClick={handleLogout} className="px-4 py-2 bg-red-500 text-white rounded">Logout</button>
-      </header>
-      <PostForm type="soil" onSuccess={() => console.log('Soil posted')} />
-      <PostForm type="distributor" onSuccess={() => console.log('Distributor posted')} />
+    <div className="min-h-screen bg-green-50 px-6 py-6">
+      
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-3xl font-bold text-green-800">
+          🧑‍💼 Admin Dashboard
+        </h1>
+        <LanguageSelector />
+      </div>
+
+      <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+
+        {/* Soil Rules */}
+        <div
+          onClick={() => router.push("/admin/soil-rules")}
+          className="bg-white p-6 rounded-xl shadow cursor-pointer hover:bg-green-100"
+        >
+          <h2 className="text-xl font-semibold text-green-700">
+            🌱 Manage Soil Rules
+          </h2>
+          <p className="text-gray-600 mt-2">
+            Define soil conditions and recommended crops
+          </p>
+        </div>
+
+        {/* Distributors */}
+        <div
+          onClick={() => router.push("/admin/distributors")}
+          className="bg-white p-6 rounded-xl shadow cursor-pointer hover:bg-green-100"
+        >
+          <h2 className="text-xl font-semibold text-green-700">
+            🏪 Manage Distributors
+          </h2>
+          <p className="text-gray-600 mt-2">
+            Add or update supplier information
+          </p>
+        </div>
+
+      </div>
     </div>
   );
-}
+};
+
+export default AdminDashboard;

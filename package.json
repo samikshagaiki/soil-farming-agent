@@ -9,7 +9,10 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "bcryptjs": "^3.0.3",
     "firebase": "^12.3.0",
+    "mongodb": "4.1",
+    "mongoose": "^9.1.2",
     "next": "15.5.4",
     "react": "19.1.0",
     "react-dom": "19.1.0"

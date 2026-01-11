@@ -23,14 +23,26 @@ const RegisterPage = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    // FRONTEND ONLY (fake register)
-    localStorage.setItem("krushimitra-user", JSON.stringify(formData));
+  const res = await fetch("/api/auth/register", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(formData)
+  });
 
-    router.push("/login");
-  };
+  const data = await res.json();
+
+  if (!res.ok) {
+    alert(data.error);
+    return;
+  }
+
+  alert("Registration successful");
+  router.push("/login");
+};
+
 
   return (
     <div className="min-h-screen bg-green-50 flex items-center justify-center px-4 relative">

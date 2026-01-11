@@ -34,12 +34,23 @@ const SoilInputPage = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    console.log("Soil Data:", formData);
-    router.push("/dashboard");
-  };
+  const res = await fetch("/api/soil", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(formData)
+  });
+
+  const data = await res.json();
+
+  localStorage.setItem("soil-result", JSON.stringify(data));
+  localStorage.setItem("krushimitra-auth", "true");
+
+  router.push("/dashboard");
+};
+
 
   return (
     <div className="min-h-screen bg-green-50 px-4 py-6">
