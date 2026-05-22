@@ -1,46 +1,47 @@
-import connectDB from "@/lib/db";
-import SoilRule from "@/models/SoilRule";
+import { NextResponse } from "next/server";
 
-function matchRule(rule, soil) {
-  return (
-    soil.ph >= rule.phMin &&
-    soil.ph <= rule.phMax &&
-    soil.moisture >= rule.moistureMin &&
-    soil.nitrogen >= rule.nitrogenMin &&
-    soil.phosphorus >= rule.phosphorusMin &&
-    soil.potassium >= rule.potassiumMin
-  );
-}
+import connectDB from "@/lib/db";
+
+import { soilSchema } from "@/validators/soilValidator";
+
+import { getCropRecommendation } from "../../../services/aiRecommendation";
 
 export async function POST(req) {
   try {
     await connectDB();
-    const soil = await req.json();
 
-    const rules = await SoilRule.find({
-      region: soil.location.toLowerCase()
+    const body = await req.json();
+
+    const parsedData = soilSchema.parse({
+      ph: Number(body.ph),
+      moisture: Number(body.moisture),
+      nitrogen: Number(body.nitrogen),
+      phosphorus: Number(body.phosphorus),
+      potassium: Number(body.potassium),
+      location: body.location
     });
 
-    let crops = ["No suitable crop found"];
+    const recommendation =
+      await getCropRecommendation(parsedData);
 
-    for (const rule of rules) {
-      if (matchRule(rule, soil)) {
-        crops = rule.crops;
-        break;
-      }
-    }
-
-    return Response.json({
-      ...soil,
-      crops
+    return NextResponse.json({
+      success: true,
+      soil: parsedData,
+      recommendation
     });
+
   } catch (error) {
-    return new Response(
-      JSON.stringify({ error: "Soil analysis failed" }),
-      { status: 500 }
+
+    console.error(error);
+
+    return NextResponse.json(
+      {
+        success: false,
+        error: error.message
+      },
+      {
+        status: 500
+      }
     );
   }
 }
-
-
-

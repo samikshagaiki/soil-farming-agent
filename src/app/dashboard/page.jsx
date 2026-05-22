@@ -69,12 +69,12 @@ const DashboardPage = () => {
           </h2>
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            <SummaryCard label="pH Value" value={soilData.ph} color="text-green-700" />
-            <SummaryCard label="Moisture" value={`${soilData.moisture}%`} color="text-green-700" />
-            <SummaryCard label="Nitrogen" value={soilData.nitrogen} color="text-green-700" />
-            <SummaryCard label="Phosphorus" value={soilData.phosphorus} color="text-green-700" />
-            <SummaryCard label="Potassium" value={soilData.potassium} color="text-green-700" />
-            <SummaryCard label="Location" value={soilData.location} color="text-green-700" />
+            <SummaryCard label="pH Value" value={soilData.soil.ph} color="text-green-700" />
+            <SummaryCard label="Moisture" value={`${soilData.soil.moisture}%`} color="text-green-700" />
+            <SummaryCard label="Nitrogen" value={soilData.soil.nitrogen} color="text-green-700" />
+            <SummaryCard label="Phosphorus" value={soilData.soil.phosphorus} color="text-green-700" />
+            <SummaryCard label="Potassium" value={soilData.soil.potassium} color="text-green-700" />
+            <SummaryCard label="Location" value={soilData.soil.location} color="text-green-700" />
           </div>
         </div>
 
@@ -85,7 +85,7 @@ const DashboardPage = () => {
           </h2>
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {soilData.crops.map((crop, index) => (
+            {soilData.recommendation.crops.map((crop, index) => (
               <div
                 key={index}
                 className="bg-green-100 text-green-900 p-4 rounded-xl shadow text-center font-medium"

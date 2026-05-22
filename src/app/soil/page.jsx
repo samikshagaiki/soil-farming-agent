@@ -35,20 +35,43 @@ const SoilInputPage = () => {
   };
 
   const handleSubmit = async (e) => {
+
   e.preventDefault();
 
-  const res = await fetch("/api/soil", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(formData)
-  });
+  try {
 
-  const data = await res.json();
+    const res = await fetch(
+      "/api/soil",
+      {
+        method: "POST",
 
-  localStorage.setItem("soil-result", JSON.stringify(data));
-  localStorage.setItem("krushimitra-auth", "true");
+        headers: {
+          "Content-Type":
+          "application/json"
+        },
 
-  router.push("/dashboard");
+        body: JSON.stringify(formData)
+      }
+    );
+
+    const data = await res.json();
+
+    if (!data.success) {
+      alert(data.error);
+      return;
+    }
+
+    localStorage.setItem(
+      "soil-result",
+      JSON.stringify(data)
+    );
+
+    router.push("/dashboard");
+
+  } catch (error) {
+
+    alert("Something went wrong");
+  }
 };
 
 

@@ -1,35 +1,57 @@
-import connectDB from "@/lib/db";
-import User from "@/models/User";
 import bcrypt from "bcryptjs";
+
+import connectDB from "@/lib/db";
+
+import User from "@/models/User";
+
+import { NextResponse } from "next/server";
 
 export async function POST(req) {
   try {
+
     await connectDB();
 
-    const { name, email, password } = await req.json();
+    const body = await req.json();
 
-    const existingUser = await User.findOne({ email });
+    const existingUser = await User.findOne({
+      email: body.email
+    });
+
     if (existingUser) {
-      return new Response(
-        JSON.stringify({ error: "User already exists" }),
-        { status: 400 }
+      return NextResponse.json(
+        {
+          error: "User already exists"
+        },
+        {
+          status: 400
+        }
       );
     }
 
-    const hashedPassword = await bcrypt.hash(password, 10);
+    const hashedPassword =
+      await bcrypt.hash(body.password, 10);
 
-    await User.create({
-      name,
-      email,
+    const user = await User.create({
+      name: body.name,
+      email: body.email,
       password: hashedPassword,
       role: "user"
     });
 
-    return Response.json({ message: "User registered successfully" });
+    return NextResponse.json({
+      success: true,
+      user
+    });
+
   } catch (error) {
-    return new Response(
-      JSON.stringify({ error: "Registration failed" }),
-      { status: 500 }
+
+    return NextResponse.json(
+      {
+        error: error.message
+      },
+      {
+        status: 500
+      }
     );
   }
 }

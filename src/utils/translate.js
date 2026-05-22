@@ -1,14 +1,17 @@
-export async function translateText(text, targetLang) {
-  const res = await fetch("/api/translate", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ text, targetLang })
-  });
+import { translateText }
+from "@/services/translationService";
 
-  if (!res.ok) {
-    throw new Error("Translation API failed");
+export async function translate(
+  text,
+  lang
+) {
+
+  if (lang === "en") {
+    return text;
   }
 
-  const data = await res.json();
-  return data.translatedText;
+  return await translateText(
+    text,
+    lang
+  );
 }

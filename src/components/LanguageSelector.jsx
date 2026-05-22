@@ -3,6 +3,7 @@
 import { useLanguage } from "@/context/LanguageContext";
 
 const LanguageSelector = () => {
+
   const { lang, setLang } = useLanguage();
 
   return (
@@ -20,9 +21,17 @@ const LanguageSelector = () => {
         focus:outline-none
       "
     >
-      <option value="en">English</option>
-      <option value="hi">हिंदी</option>
-      <option value="mr">मराठी</option>
+      <option value="en">
+        English
+      </option>
+
+      <option value="hi">
+        हिंदी
+      </option>
+
+      <option value="mr">
+        मराठी
+      </option>
     </select>
   );
 };

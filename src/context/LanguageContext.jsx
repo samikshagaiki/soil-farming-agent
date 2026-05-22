@@ -4,7 +4,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import en from "@/translations/en.json";
 import hi from "@/translations/hi.json";
 import mr from "@/translations/mr.json";
-import { translateText } from "@/utils/translate";
+import { translate } from "@/utils/translate";
 
 const LanguageContext = createContext(undefined);
 
